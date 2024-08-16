@@ -6,7 +6,7 @@ This library supports the latest API version 3. If you are looking for API versi
 ## Installing (API v3)
 
 ```
-pip install activecampaign-python
+pip install -e active-campaign
 ```
 
 ## Requirements
@@ -53,12 +53,12 @@ data = {
 		"phone": "7223224241"
 	}
 }
-response = client.contacts.create_or_update_contact(data)
+response = client.contacts.create_or_update(data)
 ```
 
 #### Retrieve a contact
 ```
-response = client.contacts.retrieve_a_contact("contact_id")
+response = client.contacts.retrieve("contact_id")
 ```
 
 #### Update list status for a contact
@@ -82,20 +82,20 @@ data = {
 		"lastName": "Doe"
 	}
 }
-response = client.contacts.update_a_contact("contact_id", data)
+response = client.contacts.update("contact_id", data)
 ```
 
 #### Delete a contact
 ```
-response = client.contacts.delete_a_contact("contact_id")
+response = client.contacts.delete("contact_id")
 ```
 
 #### List all contacts
 ```
-response = client.contacts.list_all_contacts()
+response = client.contacts.list_all()
 
 Additionally, you can filter a contact:
-response = client.contacts.list_all_contacts(email="johndoe@example.com")
+response = client.contacts.list_all(email="johndoe@example.com")
 
 For more query params: https://developers.activecampaign.com/reference#list-all-contacts
 ```

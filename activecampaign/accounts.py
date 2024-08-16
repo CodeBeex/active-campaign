@@ -119,11 +119,20 @@ class Accounts(object):
         This is useful for searching for accounts that match certain criteria -
         such as having a specific custom field value.
 
+        Example:
+            response = client.accounts.list_all()
+
+            Additionally, you can filter a contact:
+            response = client.accounts.list_all(name="Big Company")
 
         Returns:
-
+            list of accounts
         """
-        return self.client._get("/accounts", params=params)
+        response = self.client._get("/accounts", params=params)
+        if 'accounts' in response:
+            return response['accounts']
+        else:
+            return response
 
     def create_custom_field(self, data):
         """

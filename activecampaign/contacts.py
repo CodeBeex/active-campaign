@@ -175,11 +175,22 @@ class Contacts(object):
         This is useful for searching for contacts that match certain criteria -
         such as being part of a certain list, or having a specific custom field value.
 
+        Example:
+            response = client.contacts.list_all()
+
+            Additionally, you can filter a contact:
+            response = client.contacts.list_all(email="johndoe@example.com")
+
+        For more query params: https://developers.activecampaign.com/reference#list-all-contacts
 
         Returns:
 
         """
-        return self.client._get("/contacts", params=params)
+        response = self.client._get("/contacts", params=params)
+        if 'contacts' in response:
+            return response['contacts']
+        else:
+            return response
 
     def list_all_automations_contact_is_in(self, contact_id):
         """
