@@ -192,6 +192,14 @@ class Contacts(object):
         else:
             return response
 
+    def search(self, **params):
+        """
+        An alias for list_all() which uses more common method name
+        :param params:
+        :return: lest(dict)
+        """
+        return self.list_all(**params)
+
     def list_all_automations_contact_is_in(self, contact_id):
         """
 
